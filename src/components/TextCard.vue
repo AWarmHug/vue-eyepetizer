@@ -1,0 +1,52 @@
+<template>
+  <div class="container">
+    <span class="titleText" :style="titleStyle">{{item.data.text}}</span>
+    <span class="rightText" v-if="!rightTextIsNull">{{item.data.rightText}}</span>
+  </div>
+</template>
+
+<script>
+import _ from 'lodash'
+
+export default {
+  name: 'TextCard',
+  props: {
+    item: Object
+  },
+  data () {
+    return {
+      titleStyle: {
+        color: '#2b2b2b',
+        fontSize: '1.1rem'
+      }
+    }
+  },
+  computed: {
+    rightTextIsNull () {
+      return _.isNull(this.item.data.rightText)
+    }
+  }
+}
+</script>
+
+<style scoped lang="less">
+  @import "../assets/css/config.less";
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    padding-bottom: 0.5rem;
+    font-weight: bold;
+  }
+
+  .rightText {
+    text-align: right;
+    font-size: 0.8rem;
+    color: @color-action;
+  }
+
+</style>
