@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <swipe class="my-swipe" :auto="0">
-      <swipe-item class="my-swipe-item" :class=" `my-swipe-item${index}`" v-for="(it,index) in itemList" :key="index">
+      <swipe-item :class=" `my-swipe-item${index}`" v-for="(it,index) in itemList" :key="index">
         <slot :it="it">{{it.data.title}}</slot>
       </swipe-item>
     </swipe>
@@ -13,7 +13,8 @@
 export default {
   name: 'MyBanner',
   props: {
-    itemList: Array
+    itemList: Array,
+    hi: String
   },
   methods: {
     getName (it) {
@@ -30,9 +31,8 @@ export default {
 
     .my-swipe {
       width: 100%;
-      height: 10rem;
+      height: 100%;
       text-align: center;
-
     }
   }
 

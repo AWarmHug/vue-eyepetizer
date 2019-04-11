@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <my-banner v-slot="{it}" :itemList="item.data.itemList">
+    <my-banner v-slot="{it}" :itemList="item.data.itemList" :style="{height:`10rem`}">
       <component :is="getName(it)" :item="it.data"></component>
     </my-banner>
   </div>
@@ -13,7 +13,7 @@ import Banner from './Banner'
 
 export default {
   name: 'HorizontalScrollCard',
-  components: { Banner, widgets, MyBanner },
+  components: { MyBanner, Banner },
   props: {
     item: Object
   },

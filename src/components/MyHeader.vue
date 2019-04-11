@@ -2,9 +2,9 @@
   <div class="container">
     <div>
       <p class="subTitle" v-if="!subTitleIsNull">{{header.subTitle}}</p>
-      <p class=" titleText" :style="titleStyle">{{header.title}}</p>
+      <p class="titleText" :style="titleStyle">{{header.title}}</p>
     </div>
-    <span class="rightText" v-if="!rightTextIsNull">{{header.rightText}}</span>
+    <span class="rightText" :class="{to_right:!rightTextIsNull}" v-if="!rightTextIsNull">{{header.rightText}}</span>
   </div>
 </template>
 
@@ -25,9 +25,20 @@ export default {
       return _.isEmpty(this.header.rightText)
     },
     titleStyle () {
-      return {
-        fontWeight: this.header.font === 'bold' ? 'bold' : 'normal'
+      let ts = {
+        fontSize: '1rem'
       }
+
+      switch (this.header.font) {
+        case 'bigBold':
+          ts.fontSize = '1.2rem'
+          ts.fontWeight = 'bold'
+          break
+        case 'bold':
+          ts.fontWeight = 'bold'
+          break
+      }
+      return ts
     }
   }
 }
@@ -41,7 +52,7 @@ export default {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     padding: 0 1rem;
     padding-bottom: 0.5rem;
 
@@ -59,6 +70,12 @@ export default {
       text-align: right;
       font-size: 0.8rem;
       color: @color-action;
+    }
+
+    .to_right:after {
+      content: url("../assets/image/to_right.png");
+      display: inline-block;
+      height: 50%;
     }
   }
 

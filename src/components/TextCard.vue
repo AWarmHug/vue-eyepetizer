@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <span class="titleText" :style="titleStyle">{{item.data.text}}</span>
-    <span class="rightText" v-if="!rightTextIsNull">{{item.data.rightText}}</span>
+    <span class="rightText" :class="{to_right:!rightTextIsNull}" v-if="!rightTextIsNull">{{item.data.rightText}}</span>
   </div>
 </template>
 
@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     rightTextIsNull () {
-      return _.isNull(this.item.data.rightText)
+      return _.isEmpty(this.item.data.rightText)
     }
   }
 }
@@ -47,6 +47,12 @@ export default {
     text-align: right;
     font-size: 0.8rem;
     color: @color-action;
+  }
+
+  .to_right:after {
+    content: url("../assets/image/to_right.png");
+    display: inline-block;
+    height: 50%;
   }
 
 </style>

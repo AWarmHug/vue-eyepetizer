@@ -6,7 +6,7 @@
       <p class="desc">{{item.data.description}}</p>
     </div>
     <div>
-      <button class="btn">+关注</button>
+      <button class="btn">+ 关注</button>
     </div>
   </div>
 </template>
@@ -27,7 +27,7 @@ export default {
 
   .container {
     display: grid;
-    grid-template-columns: 2.5rem auto 2.5rem;
+    grid-template-columns: 2.5rem auto 3rem;
     grid-template-rows: 3rem;
     padding: 0 1rem;
     grid-column-gap: 0.6rem;
@@ -48,13 +48,11 @@ export default {
 
       .desc {
         font-size: 0.6rem;
-        word-break: break-all;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        .textClamp;
       }
+    }
+    .btn{
+      font-weight: bold;
     }
   }
 

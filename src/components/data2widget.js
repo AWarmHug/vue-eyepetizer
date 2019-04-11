@@ -3,8 +3,12 @@ import SpecialSquareCardCollection from './SpecialSquareCardCollection'
 import ColumnCardList from './ColumnCardList'
 import TextCard from './TextCard'
 import BriefCard from './BriefCard'
-import ItemCollection from './ItemCollection'
 import Banner from './Banner'
+import SquareCardCollection from './SquareCardCollection'
+import FollowCard from './FollowCard'
+import MyVideo from './MyVideo'
+import VideoSmallCard from './VideoSmallCard'
+import FooterTextCard from './FooterTextCard'
 
 const horizontalScrollCard = 'horizontalScrollCard'
 const specialSquareCardCollection = 'specialSquareCardCollection'
@@ -12,29 +16,43 @@ const columnCardList = 'columnCardList'
 const textCard = 'textCard'
 const briefCard = 'briefCard'
 const banner = 'banner'
-
-/**
- <my-banner :item="values.itemList[0]"></my-banner>
- <my-item-tag :item="values.itemList[1]"></my-item-tag>
- <my-item-column :item="values.itemList[2]"></my-item-column>
- <my-item-title :item="values.itemList[3]"></my-item-title>
- <tag-brief-card :item="values.itemList[4]"></tag-brief-card>
- **/
+const squareCardCollection = 'squareCardCollection'
+const followCard = 'followCard'
+const video = 'video'
+const videoSmallCard = 'videoSmallCard'
 
 export function item2widget (item) {
+  return { name: item2WidgetName(item), json: item }
+}
+
+export function item2WidgetName (item) {
   switch (item.type) {
     case horizontalScrollCard:
-      return { name: 'HorizontalScrollCard', data: item }
+      return 'HorizontalScrollCard'
     case specialSquareCardCollection:
-      return { name: 'SpecialSquareCardCollection', data: item }
+      return 'SpecialSquareCardCollection'
     case columnCardList:
-      return { name: 'ColumnCardList', data: item }
+      return 'ColumnCardList'
     case textCard:
-      return { name: 'TextCard', data: item }
+      if (item.data.type.indexOf('footer') !== -1) {
+        console.log('FooterTextCard')
+        return 'FooterTextCard'
+      } else {
+        console.log('TextCard')
+        return 'TextCard'
+      }
     case briefCard:
-      return { name: 'BriefCard', data: item }
+      return 'BriefCard'
     case banner:
-      return { name: 'Banner', data: item }
+      return 'Banner'
+    case squareCardCollection:
+      return 'SquareCardCollection'
+    case followCard:
+      return 'FollowCard'
+    case video:
+      return 'MyVideo'
+    case videoSmallCard:
+      return 'VideoSmallCard'
   }
 }
 
@@ -47,13 +65,17 @@ export function itemList2Widgets (itemList) {
 }
 
 let widgets = {
-  ItemCollection,
   BriefCard,
+  FooterTextCard,
   TextCard,
   ColumnCardList,
   SpecialSquareCardCollection,
   HorizontalScrollCard,
-  Banner
+  Banner,
+  SquareCardCollection,
+  FollowCard,
+  MyVideo,
+  VideoSmallCard
 }
 
 export { widgets }

@@ -13,12 +13,11 @@
 
 <script>
 import _ from 'lodash'
-import { SquareCard } from '../data/model'
 
 export default {
   name: 'SquareCardOfCategory',
   props: {
-    item: SquareCard
+    item: Object
   },
   methods: {
     descriptionIsEmpty (item) {

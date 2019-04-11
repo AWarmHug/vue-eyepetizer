@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <component v-for="(item,index) in values" :key="index" :is="item.name" :item="item.data">
+    <component v-for="(item,index) in values" :key="index" :is="item.name" :item="item.json">
     </component>
   </div>
 </template>
@@ -31,10 +31,6 @@ export default {
         .catch(reason => {
           console.log(reason)
         })
-    },
-    getHtml (item) {
-      console.log(item)
-      return item
     }
   }
 }

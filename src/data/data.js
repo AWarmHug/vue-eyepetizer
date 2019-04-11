@@ -26,3 +26,23 @@ export function getAllRec () {
       return Promise.resolve(response.data)
     })
 }
+
+export function s2t (duration) {
+  var h = Math.floor(duration / 3600) < 10 ? '0' + Math.floor(duration / 3600) : Math.floor(duration / 3600)
+  var m = Math.floor((duration / 60 % 60)) < 10 ? '0' + Math.floor((duration / 60 % 60)) : Math.floor((duration / 60 % 60))
+  var s = Math.floor((duration % 60)) < 10 ? '0' + Math.floor((duration % 60)) : Math.floor((duration % 60))
+  let value = ''
+
+  if (h !== '00') {
+    value += h + ':'
+  }
+  if (m !== '00') {
+    value += m + ':'
+  }
+
+  value += s
+
+  return value
+}
+
+console.log(s2t(200))

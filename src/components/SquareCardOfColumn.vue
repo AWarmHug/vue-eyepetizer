@@ -18,7 +18,7 @@ import { SquareCard } from '../data/model'
 export default {
   name: 'SquareCardOfColumn',
   props: {
-    item: SquareCard
+    item: Object
   },
   methods: {
     descriptionIsEmpty (item) {
