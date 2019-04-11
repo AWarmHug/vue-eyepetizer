@@ -51,7 +51,8 @@ export default {
         .textClamp;
       }
     }
-    .btn{
+
+    .btn {
       font-weight: bold;
     }
   }
