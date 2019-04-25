@@ -27,6 +27,32 @@ export function getAllRec () {
     })
 }
 
+// 日报
+// http://baobab.kaiyanapp.com/api/v5/index/tab/feed?udid=5c3cd125c0ba45858bf82a70899d1334328c544e&vc=472&vn=5.2&size=1080X2340&deviceModel=JSN-AL00a&first_channel=eyepetizer_zhihuiyun_market&last_channel=eyepetizer_zhihuiyun_market&system_version_code=27
+
+const feed = '/v5/index/tab/feed' + commonParameter
+
+export function getFeed () {
+  return axios.get(feed)
+    .then((response) => {
+      return Promise.resolve(response.data)
+    })
+}
+// 相关推荐
+// http://baobab.kaiyanapp.com/api/v4/video/related?id=157221&udid=5c3cd125c0ba45858bf82a70899d1334328c544e&vc=472&vn=5.2&size=1080X2340&deviceModel=JSN-AL00a&first_channel=eyepetizer_zhihuiyun_market&last_channel=eyepetizer_zhihuiyun_market&system_version_code=27
+const video = '/v4/video/related' + commonParameter
+
+export function getRelated (videoId) {
+  return axios.get(video, {
+    params: { id: videoId }
+  }).then((response) => {
+    return Promise.resolve(response.data)
+  })
+}
+
+// 根据id获取详情
+// http://baobab.kaiyanapp.com/api/v2/video/158183?udid=5c3cd125c0ba45858bf82a70899d1334328c544e&vc=472&vn=5.2&size=1080X2340&deviceModel=JSN-AL00a&first_channel=eyepetizer_zhihuiyun_market&last_channel=eyepetizer_zhihuiyun_market&system_version_code=27
+
 export function s2t (duration) {
   var h = Math.floor(duration / 3600) < 10 ? '0' + Math.floor(duration / 3600) : Math.floor(duration / 3600)
   var m = Math.floor((duration / 60 % 60)) < 10 ? '0' + Math.floor((duration / 60 % 60)) : Math.floor((duration / 60 % 60))

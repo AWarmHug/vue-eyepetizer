@@ -54,7 +54,7 @@ export default {
     .header {
       width: 2.5rem;
       height: 2.5rem;
-      border-radius: 0.2rem;
+      border-radius: 1.25rem;
     }
 
     .content {
@@ -70,6 +70,7 @@ export default {
         font-size: 0.7rem;
         line-height: 1.2rem;
         font-weight: 200;
+        margin-top: 0.2rem;
         color: rgba(0, 0, 0, 0.6);
         .textClamp;
       }

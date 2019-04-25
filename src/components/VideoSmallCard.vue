@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" @click="goVideo()">
     <div class="cover" :style="{backgroundImage: `url('${item.data.cover.feed}')`}">
       <span class="time">{{_s2t(item.data.duration)}}</span>
     </div>
@@ -20,6 +20,10 @@ export default {
   methods: {
     _s2t (duration) {
       return s2t(duration)
+    },
+    goVideo () {
+      console.log('dianj le ')
+      this.$router.push({ name: 'video', params: { item: this.item } })
     }
   }
 }
@@ -31,12 +35,14 @@ export default {
   @import "../assets/css/common-widget.less";
 
   .container {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     display: grid;
+    box-sizing: border-box;
+    padding-left: 1rem;
+    padding-right: 1rem;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 3rem 3rem;
-    grid-column-gap: 0.5rem;
+    grid-template-rows: 2.5rem 2.5rem;
 
     .cover {
       height: 100%;
@@ -46,6 +52,7 @@ export default {
       position: relative;
       grid-row-start: 1;
       grid-row-end: 3;
+      margin-right: 1rem;
 
       .time {
         position: absolute;
@@ -62,14 +69,12 @@ export default {
     .title {
       font-size: 0.8rem;
       font-weight: bold;
-      line-height: 3rem;
-      .textClamp(2);
+      .textClamp(3);
     }
 
     .category {
       font-size: 0.7rem;
       font-weight: 200;
-      color: rgba(0, 0, 0, 0.6);
       line-height: 3rem;
       .textClamp;
     }

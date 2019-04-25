@@ -1,5 +1,5 @@
 <template>
-  <div class="container" ref="container">
+  <div class="container" :scroll="scroll">
     <component v-for="(item,index) in values" :key="index" :is="item.name" :item="item.json">
     </component>
   </div>
@@ -10,13 +10,13 @@ import { getFeed } from '../data/data'
 import { itemList2Widgets, widgets } from '../components/data2widget'
 
 export default {
-  name: 'EyeDaily',
+  name: 'EyeList',
   components: widgets,
   created () {
     this._getFeed()
   },
-  mounted () {
-    this.window.addEventListener('scroll', this.scroll(), true)
+  props: {
+    me: Function
   },
   data () {
     return {
@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     _getFeed () {
-      getFeed()
+      this.me()
         .then(value => {
           console.log(value)
           this.values = itemList2Widgets(value.itemList)
@@ -36,7 +36,7 @@ export default {
         })
     },
     scroll () {
-      console.log(11111)
+      console.log(111)
     }
   }
 }

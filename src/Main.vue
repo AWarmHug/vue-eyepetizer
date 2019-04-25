@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="container">
     <div class="nav">
       <router-link tag="a" to="/" class="tab-item">
         <span class="tab-item-text">发现</span>
@@ -11,7 +11,7 @@
         <span class="tab-item-text">日报</span>
       </router-link>
     </div>
-    <router-view></router-view>
+    <router-view/>
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" @click="goVideo()">
     <div class="cover" :style="{backgroundImage: `url('${item.data.cover.feed}')`}">
       <span class="time">{{_s2t(item.data.duration)}}</span>
     </div>
@@ -15,6 +15,9 @@ export default {
   methods: {
     _s2t (duration) {
       return s2t(duration)
+    },
+    goVideo () {
+      this.$router.push({ name: 'video', params: { item: this.item } })
     }
   }
 

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <my-header :header="item.data.header"></my-header>
+    <my-header class="header" :header="item.data.header"></my-header>
     <div class="list" :style="gridStyle">
       <square-card-of-category v-for="(it,index) in item.data.itemList" :key="index"
                                :item="it"></square-card-of-category>
@@ -37,9 +37,16 @@ export default {
   @grid-gap-length: 0.25rem;
 
   .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    .header {
+      padding-left: 0;
+      padding-right: 0;
+      padding-bottom: 0.5rem;
+    }
+
     .list {
-      padding-left: 1rem;
-      padding-right: 1rem;
       overflow-x: scroll;
       -webkit-overflow-scrolling: touch;
       display: grid;
