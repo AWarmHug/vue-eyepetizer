@@ -5,6 +5,7 @@ import EyeRecommend from './views/EyeRecommend.vue'
 import EyeDaily from './views/EyeDaily.vue'
 import VideoDetail from './views/VideoDetail.vue'
 import Main from './Main.vue'
+import TagIndex from './views/TagIndex'
 
 Vue.use(Router)
 
@@ -35,13 +36,35 @@ export default new Router({
           name: 'daily',
           component: EyeDaily
         }
-      ]
+      ],
+      meta: {
+        keepAlive: true
+      }
     },
     {
       path: '/video',
       name: 'video',
       component: VideoDetail,
-      props: true
+      props: true,
+      meta: {
+        keepAlive: true
+      }
+    },
+    {
+      path: '/tag/:id',
+      name: 'tag',
+      component: TagIndex,
+      props: true,
+      meta: {
+        keepAlive: true
+      }
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })

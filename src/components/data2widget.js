@@ -9,6 +9,10 @@ import FollowCard from './FollowCard'
 import MyVideo from './MyVideo'
 import VideoSmallCard from './VideoSmallCard'
 import FooterTextCard from './FooterTextCard'
+import AutoPlayFollowCard from './AutoPlayFollowCard'
+
+import TagInfo from '../components/TagInfo'
+import TabList from '../components/TabList'
 
 const horizontalScrollCard = 'horizontalScrollCard'
 const specialSquareCardCollection = 'specialSquareCardCollection'
@@ -20,6 +24,7 @@ const squareCardCollection = 'squareCardCollection'
 const followCard = 'followCard'
 const video = 'video'
 const videoSmallCard = 'videoSmallCard'
+const autoPlayFollowCard = 'autoPlayFollowCard'
 
 export function item2widget (item) {
   return { name: item2WidgetName(item), json: item }
@@ -49,6 +54,8 @@ export function item2WidgetName (item) {
       return 'SquareCardCollection'
     case followCard:
       return 'FollowCard'
+    case autoPlayFollowCard:
+      return AutoPlayFollowCard
     case video:
       return 'MyVideo'
     case videoSmallCard:
@@ -75,7 +82,9 @@ let widgets = {
   SquareCardCollection,
   FollowCard,
   MyVideo,
-  VideoSmallCard
+  VideoSmallCard,
+  TagInfo,
+  TabList
 }
 
 export { widgets }

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import _ from 'lodash'
 
 const commonParameter = '?udid=5c3cd125c0ba45858bf82a70899d1334328c544e&vc=472&vn=5.2&size=1080X2340&deviceModel=JSN-AL00a&first_channel=eyepetizer_zhihuiyun_market&last_channel=eyepetizer_zhihuiyun_market&system_version_code=27'
 // const commonParameter = ''
@@ -38,6 +39,7 @@ export function getFeed () {
       return Promise.resolve(response.data)
     })
 }
+
 // 相关推荐
 // http://baobab.kaiyanapp.com/api/v4/video/related?id=157221&udid=5c3cd125c0ba45858bf82a70899d1334328c544e&vc=472&vn=5.2&size=1080X2340&deviceModel=JSN-AL00a&first_channel=eyepetizer_zhihuiyun_market&last_channel=eyepetizer_zhihuiyun_market&system_version_code=27
 const video = '/v4/video/related' + commonParameter
@@ -52,6 +54,32 @@ export function getRelated (videoId) {
 
 // 根据id获取详情
 // http://baobab.kaiyanapp.com/api/v2/video/158183?udid=5c3cd125c0ba45858bf82a70899d1334328c544e&vc=472&vn=5.2&size=1080X2340&deviceModel=JSN-AL00a&first_channel=eyepetizer_zhihuiyun_market&last_channel=eyepetizer_zhihuiyun_market&system_version_code=27
+
+// 根据tagId获取tag详情
+// http://baobab.kaiyanapp.com/api/v6/tag/index?id=1022
+
+const tagIndex = '/v6/tag/index' + commonParameter
+
+export function getTagIndex (tagId) {
+  return axios.get(tagIndex, {
+    params: { id: tagId }
+  }).then(response => {
+    return Promise.resolve(response.data)
+  })
+}
+
+export function getLink (link) {
+  link = link.replace('http://baobab.kaiyanapp.com/api', '')
+  if (link.indexOf('?') !== -1) {
+    link += commonParameter.replace('?', '&')
+  } else {
+    link += commonParameter
+  }
+  console.log(link)
+  return axios.get(link).then(response => {
+    return Promise.resolve(response.data)
+  })
+}
 
 export function s2t (duration) {
   var h = Math.floor(duration / 3600) < 10 ? '0' + Math.floor(duration / 3600) : Math.floor(duration / 3600)

@@ -218,4 +218,26 @@ let FollowCard = {
   'adTrack': null
 }
 
-export { Header, ItemCollection, SquareCard, FollowCard }
+let TagInfo = {
+  'dataType': 'TagInfo',
+  'id': 1022,
+  'name': '运动',
+  'description': '冲浪、滑板、健身、跑酷，我过着停不下来的生活',
+  'headerImage': 'http://img.kaiyanapp.com/481837cc0b1c52a3a87d6156d52cfdfa.jpeg?imageMogr2/quality/60/format/jpg',
+  'bgPicture': 'http://img.kaiyanapp.com/cb87116785473e4064687036b53b5af3.jpeg?imageMogr2/quality/60/format/jpg',
+  'actionUrl': null,
+  'recType': 0,
+  'follow': {
+    'itemType': 'TagInfo',
+    'itemId': 1022,
+    'followed': false
+  },
+  'tagFollowCount': 51359,
+  'tagVideoCount': 5274,
+  'tagDynamicCount': 54,
+  'childTabList': null,
+  'lookCount': 542937,
+  'shareLinkUrl': 'http://www.kaiyanapp.com/campaign/tag_square/tag_square.html?tid=1022&utm_campaign=routine&utm_medium=share&pageSource=tagSquare'
+}
+
+export { Header, ItemCollection, SquareCard, FollowCard,TagInfo }

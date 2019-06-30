@@ -1,5 +1,5 @@
 <template>
-  <div class="container" :style="{backgroundImage: `url('${item.data.image}')`}">
+  <div class="container" :style="{backgroundImage: `url('${item.data.image}')`} " @click="goTagIndex">
     <div>
       <p class="title">
         {{item.data.title}}
@@ -22,6 +22,9 @@ export default {
   methods: {
     descriptionIsEmpty (item) {
       return _.isEmpty(item.data.description)
+    },
+    goTagIndex () {
+      this.$router.push({ name: 'tag', params: { id: this.item.data.id.toString() } })
     }
   }
 }
