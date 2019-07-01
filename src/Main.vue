@@ -11,7 +11,9 @@
         <span class="tab-item-text">日报</span>
       </router-link>
     </div>
-    <router-view/>
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
   </div>
 </template>
 
