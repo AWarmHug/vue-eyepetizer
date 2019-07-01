@@ -1,6 +1,9 @@
 # vue-eyepetizer
 
+[主页](../dist/index.html)
+
 ## Project setup
+
 ```
 npm install
 ```
