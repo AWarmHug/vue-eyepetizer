@@ -1,6 +1,6 @@
 # vue-eyepetizer
 
-[主页](../dist/index.html)
+[主页](https://awarmhug.github.io/vue-eyepetizer/dist/index.html)
 
 ## Project setup
 
