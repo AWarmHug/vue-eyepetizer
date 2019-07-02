@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <tag-info v-if="tag.tagInfo" :tag-info="tag.tagInfo"></tag-info>
-    <tab-list v-if="tag.tabInfo" :tab-list="tag.tabInfo.tabList"></tab-list>
+    <TagInfo v-if="tag.tagInfo" :tag-info="tag.tagInfo"></TagInfo>
+    <TabList v-if="tag.tabInfo" :tabList="tag.tabInfo.tabList" :click="click"></TabList>
     <component v-for="(item,index) in values" :key="index" :is="item.name" :item="item.json">
     </component>
   </div>
@@ -35,10 +35,7 @@ export default {
       getTagIndex(this.id)
         .then(value => {
           this.tag = value
-          getLink(this.tag.tabInfo.tabList[0].apiUrl)
-            .then(value1 => {
-              this.values = itemList2Widgets(value1.itemList)
-            })
+          this.click(0)
         })
         .catch(reason => {
           console.log(reason.toString())
@@ -47,6 +44,12 @@ export default {
     fetchData () {
       this.id = this.$route.params.id
       this._getTagIndex()
+    },
+    click (index) {
+      getLink(this.tag.tabInfo.tabList[index].apiUrl)
+        .then(value1 => {
+          this.values = itemList2Widgets(value1.itemList)
+        })
     }
   }
 }
