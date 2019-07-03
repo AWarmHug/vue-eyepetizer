@@ -1,5 +1,5 @@
 <template>
-  <div class="container" :style="{backgroundImage: `url('${item.data.image}')`}">
+  <div class="container" :style="{backgroundImage: `url('${item.data.image}')`}" @click="click">
     <div>
       <p class="title">
         {{item.data.title}}
@@ -13,7 +13,6 @@
 
 <script>
 import _ from 'lodash'
-import { SquareCard } from '../data/model'
 
 export default {
   name: 'SquareCardOfColumn',
@@ -23,7 +22,22 @@ export default {
   methods: {
     descriptionIsEmpty (item) {
       return _.isEmpty(item.data.description)
+    },
+    click () {
+      let actionUrl = this.item.data.actionUrl
+      if (actionUrl.indexOf('url=', 0) !== -1) {
+        let url = this.decodeUnicode(actionUrl.substring(actionUrl.indexOf('url=', 0) + 4, actionUrl.length))
+        console.log(url)
+        window.location.href = url
+      } else {
+        alert('原生功能')
+      }
+    },
+    decodeUnicode (str) {
+      str = str.replace(/\\/g, '%')
+      return unescape(str)
     }
+
   }
 }
 </script>
