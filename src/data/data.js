@@ -1,6 +1,5 @@
-import axios from 'axios'
-import _ from 'lodash'
-
+import axios from '../utils/request.js'
+// import axios from 'axios'
 const commonParameter = '?udid=5c3cd125c0ba45858bf82a70899d1334328c544e&vc=472&vn=5.2&size=1080X2340&deviceModel=JSN-AL00a&first_channel=eyepetizer_zhihuiyun_market&last_channel=eyepetizer_zhihuiyun_market&system_version_code=27'
 // const commonParameter = ''
 // 列表
